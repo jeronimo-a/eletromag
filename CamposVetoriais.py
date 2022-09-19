@@ -22,7 +22,7 @@ class CampoVetorial2D:
 
 		'''
 
-		# amarra os argumentos à insrância da classe
+		# amarra os argumentos à instância da classe
 		self.funcao_x = funcao_x
 		self.funcao_y = funcao_y
 
@@ -113,7 +113,7 @@ class CampoVetorial3D:
 
 		'''
 
-		# amarra os argumentos à insrância da classe
+		# amarra os argumentos à instância da classe
 		self.funcao_x = funcao_x
 		self.funcao_y = funcao_y
 		self.funcao_z = funcao_z

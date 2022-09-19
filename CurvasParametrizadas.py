@@ -17,8 +17,8 @@ class CurvaParametrizada2D:
 		Inicializa uma nova curva parametrizada 2D.
 
 		Parâmetros:
-		- funcao_x: [função (num) -> num] do eixo x
-		- funcao_y: [função (num) -> num] do eixo y
+		- funcao_x: instância de Funcao1D do eixo x
+		- funcao_y: instância de Funcao1D do eixo y
 
 		'''
 
@@ -42,8 +42,8 @@ class CurvaParametrizada2D:
 		ponto = tuple()
 
 		# calcula os valores
-		x = self.funcao_x(t)
-		y = self.funcao_y(t)
+		x = self.funcao_x.calcular(t)
+		y = self.funcao_y.calcular(t)
 		ponto = (x, y)
 
 		return ponto
@@ -65,15 +65,9 @@ class CurvaParametrizada2D:
 		# valor de retorno
 		vetor = tuple()
 
-		# cálculo da derivada de x
-		valor_x = self.funcao_x(t)
-		valor_xr = self.funcao_x(t + variacao)
-		derivada_x = (valor_xr - valor_x) / variacao
-
-		# cálculo da derivada de y
-		valor_y = self.funcao_y(t)
-		valor_yr = self.funcao_y(t + variacao)
-		derivada_y = (valor_yr - valor_y) / variacao
+		# cálculo das derivadas
+		derivada_x = self.funcao_x.calcular_derivada(t, variacao)
+		derivada_y = self.funcao_y.calcular_derivada(t, variacao)
 
 		# definição do valor de retorno
 		vetor = (derivada_x, derivada_y)
@@ -91,9 +85,9 @@ class CurvaParametrizada3D:
 		Inicializa uma nova curva parametrizada 3D.
 
 		Parâmetros:
-		- funcao_x: [função (num) -> num] do eixo x
-		- funcao_y: [função (num) -> num] do eixo y
-		- funcao_z: [função (num) -> num] do eixo z
+		- funcao_x: instância de Funcao1D do eixo x
+		- funcao_y: instância de Funcao1D do eixo y
+		- funcao_z: instância de Funcao1D do eixo z
 
 		'''
 
@@ -118,9 +112,9 @@ class CurvaParametrizada3D:
 		ponto = tuple()
 
 		# calcula os valores
-		x = self.funcao_x(t)
-		y = self.funcao_y(t)
-		z = self.funcao_z(t)
+		x = self.funcao_x.calcular(t)
+		y = self.funcao_y.calcular(t)
+		z = self.funcao_z.calcular(t)
 		ponto = (x, y, z)
 
 		return ponto
@@ -142,20 +136,10 @@ class CurvaParametrizada3D:
 		# valor de retorno
 		vetor = tuple()
 
-		# cálculo da derivada de x
-		valor_x = self.funcao_x(t)
-		valor_xr = self.funcao_x(t + variacao)
-		derivada_x = (valor_xr - valor_x) / variacao
-
-		# cálculo da derivada de y
-		valor_y = self.funcao_y(t)
-		valor_yr = self.funcao_y(t + variacao)
-		derivada_y = (valor_yr - valor_y) / variacao
-
-		# cálculo da derivada de y
-		valor_z = self.funcao_z(t)
-		valor_zr = self.funcao_z(t + variacao)
-		derivada_z = (valor_zr - valor_z) / variacao
+		# cálculo das derivadas
+		derivada_x = self.funcao_x.calcular_derivada(t, variacao)
+		derivada_y = self.funcao_y.calcular_derivada(t, variacao)
+		derivada_z = self.funcao_z.calcular_derivada(t, variacao)
 
 		# definição do valor de retorno
 		vetor = (derivada_x, derivada_y, derivada_z)
