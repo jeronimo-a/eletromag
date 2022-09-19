@@ -14,8 +14,9 @@ O desenvolvimento do repositório será feito a partir da apostila da disciplina
 
 Para cada aula, o processo de implementação será:
 
+1. Identificar as coisas a serem implementadas a partir da apostila;
+1. Listar as coisas [arquivo](MILESTONES.md) de documentação dos *milestones*;
 1. Criar o *milestone* da aula no *github*;
-2. Identificar as coisas a serem implementadas a partir da apostila;
-3. Criar um *issue* para cada coisa pertencente ao *milestone*;
-4. Implementar os cada *issue* individualmente.
+1. Criar um *issue* para cada coisa pertencente ao *milestone*;
+1. Implementar os cada *issue* individualmente.
 
