@@ -17,8 +17,8 @@ class CampoVetorial2D:
 		Inicializa um novo campo vetorial 2D.
 
 		Parâmetros:
-		- funcao_x: [função (num, num) -> num] do eixo x
-		- funcao_y: [função (num, num) -> num] do eixo y
+		- funcao_x: instância de Funcao2D do eixo x
+		- funcao_y: instância de Funcao2D do eixo y
 
 		'''
 
@@ -43,8 +43,8 @@ class CampoVetorial2D:
 		vetor = tuple()
 
 		# calcula os valores
-		valor_x = self.funcao_x(x, y)
-		valor_y = self.funcao_y(x, y)
+		valor_x = self.funcao_x.calcular(x, y)
+		valor_y = self.funcao_y.calcular(x, y)
 		vetor = (valor_x, valor_y)
 
 		return vetor
@@ -107,9 +107,9 @@ class CampoVetorial3D:
 		Inicializa um novo campo vetorial 3D.
 
 		Parâmetros:
-		- funcao_x: [função (num, num, num) -> num] do eixo x
-		- funcao_y: [função (num, num, num) -> num] do eixo y
-		- funcao_z: [função (num, num, num) -> num] do eixo z
+		- funcao_x: instância de Funcao3D do eixo x
+		- funcao_y: instância de Funcao3D do eixo y
+		- funcao_z: instância de Funcao3D do eixo z
 
 		'''
 
@@ -136,9 +136,9 @@ class CampoVetorial3D:
 		vetor = tuple()
 
 		# calcula os valores
-		valor_x = self.funcao_x(x, y, z)
-		valor_y = self.funcao_y(x, y, z)
-		valor_z = self.funcao_z(x, y, z)
+		valor_x = self.funcao_x.calcular(x, y, z)
+		valor_y = self.funcao_y.calcular(x, y, z)
+		valor_z = self.funcao_z.calcular(x, y, z)
 		vetor = (valor_x, valor_y, valor_z)
 
 		return vetor

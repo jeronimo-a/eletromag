@@ -49,6 +49,42 @@ class Funcao1D:
 
 
 
+class Funcao2D:
+	''' Classe que define uma função FIXA de duas variáveis '''
+	
+
+	def __init__(self, funcao):
+		'''
+		Inicializa uma nova função matemática de duas variáveis.
+
+		Parâmetros:
+		- funcao: função python [(num, num) -> num]
+
+		'''
+		
+		# define o método de cálculo
+		self.calcular = funcao
+
+
+
+class Funcao3D:
+	''' Classe que define uma função FIXA de três variáveis '''
+
+
+	def __init__(self, funcao):
+		'''
+		Inicializa uma nova função matemática de três variáveis.
+
+		Parâmetros:
+		- funcao: função python [(num, num, num) -> num]
+
+		'''
+		
+		# define o método de cálculo
+		self.calcular = funcao
+
+
+
 
 
 
