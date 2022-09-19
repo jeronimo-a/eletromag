@@ -8,3 +8,14 @@ Jerônimo de Abreu Afrange
 
 Esse repositório contém implementações computacionais dos conceitos matemáticos e físicos abordados na disciplina de Eletromagnetismo e Ondulatória do terceiro semestre dos cursos de engenharia do Insper. O objetivo que se tem em mente ao desenvolver esse conteúdo é absorver melhor o centeúdo da disciplina.
 
+### Desenvolvimento
+
+O desenvolvimento do repositório será feito a partir da apostila da disciplina do segundo semestre de 2022. Cada aula será um *milestone* do *github*, e cada conceito individual será um *issue* específico que faz parte do respectivo *milestone*.
+
+Para cada aula, o processo de implementação será:
+
+1. Criar o *milestone* da aula no *github*;
+2. Identificar as coisas a serem implementadas a partir da apostila;
+3. Criar um *issue* para cada coisa pertencente ao *milestone*;
+4. Implementar os cada *issue* individualmente.
+
