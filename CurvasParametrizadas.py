@@ -49,14 +49,14 @@ class CurvaParametrizada2D:
 		return ponto
 
 
-	def calcular_derivada(self, t, resolucao=1e-6):
+	def calcular_derivada(self, t, variacao=1e-6):
 		'''
 		Calcula numericamente o valor da derivada da posição da curva
 		parametrizada em determinado valor do parâmetro.
 		
 		Parâmetros:
 		- t: valor do parâmetro
-		- resolucao: variação no parâmetro usada para calcular
+		- variacao: variação no parâmetro usada para calcular
 
 		Retorna um vetor (tupla) de duas dimensões (x, y)
 
@@ -67,13 +67,13 @@ class CurvaParametrizada2D:
 
 		# cálculo da derivada de x
 		valor_x = self.funcao_x(t)
-		valor_xr = self.funcao_x(t + resolucao)
-		derivada_x = (valor_xr - valor_x) / resolucao
+		valor_xr = self.funcao_x(t + variacao)
+		derivada_x = (valor_xr - valor_x) / variacao
 
 		# cálculo da derivada de y
 		valor_y = self.funcao_y(t)
-		valor_yr = self.funcao_y(t + resolucao)
-		derivada_y = (valor_yr - valor_y) / resolucao
+		valor_yr = self.funcao_y(t + variacao)
+		derivada_y = (valor_yr - valor_y) / variacao
 
 		# definição do valor de retorno
 		vetor = (derivada_x, derivada_y)
@@ -126,14 +126,14 @@ class CurvaParametrizada3D:
 		return ponto
 
 
-	def calcular_derivada(self, t, resolucao=1e-6):
+	def calcular_derivada(self, t, variacao=1e-6):
 		'''
 		Calcula numericamente o valor da derivada da posição da curva
 		parametrizada em determinado valor do parâmetro.
 		
 		Parâmetros:
 		- t: valor do parâmetro
-		- resolucao: variação no parâmetro usada para calcular
+		- variacao: variação no parâmetro usada para calcular
 
 		Retorna um vetor (tupla) de três dimensões (x, y, z)
 
@@ -144,18 +144,18 @@ class CurvaParametrizada3D:
 
 		# cálculo da derivada de x
 		valor_x = self.funcao_x(t)
-		valor_xr = self.funcao_x(t + resolucao)
-		derivada_x = (valor_xr - valor_x) / resolucao
+		valor_xr = self.funcao_x(t + variacao)
+		derivada_x = (valor_xr - valor_x) / variacao
 
 		# cálculo da derivada de y
 		valor_y = self.funcao_y(t)
-		valor_yr = self.funcao_y(t + resolucao)
-		derivada_y = (valor_yr - valor_y) / resolucao
+		valor_yr = self.funcao_y(t + variacao)
+		derivada_y = (valor_yr - valor_y) / variacao
 
 		# cálculo da derivada de y
 		valor_z = self.funcao_z(t)
-		valor_zr = self.funcao_z(t + resolucao)
-		derivada_z = (valor_zr - valor_z) / resolucao
+		valor_zr = self.funcao_z(t + variacao)
+		derivada_z = (valor_zr - valor_z) / variacao
 
 		# definição do valor de retorno
 		vetor = (derivada_x, derivada_y, derivada_z)

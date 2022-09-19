@@ -50,20 +50,51 @@ class CampoVetorial2D:
 		return vetor
 
 
-	def calcular_integral_linha(self, curva, resolucao=1e-3):
+	def calcular_integral_linha(self, curva, t_inicial, t_final, resolucao=1e3, variacao=1e-3):
 		'''
 		Calcula a integral de linha do campo em uma curva.
 
 		Parâmetros:
-		- curva: [função (num) -> (num, num)] curva parametrizada 2D
-		- resolucao: variação no parâmetro da curva usado para calcular
+		- curva: instância de CurvaParametrizada2D
+		- t_inicial: valor inicial de t
+		- t_final: valor final de t
+		- resolucao: número de subdivisões de integração
+		- variacao: variação no parâmetro usada para calcular a derivada da curva 
 
 		Retorna o valor da integral de linha (num)
 
 		'''
 
-		pass
-		
+		# força int em resolução
+		resolucao = int(resolucao)
+
+		# valor de retorno
+		integral = float()
+
+		# pré-cálculos
+		delta_t = t_final - t_inicial
+		dt = delta_t / resolucao
+
+		# loop de cálculo
+		for i in range(resolucao):
+
+			# calcula o valor de t atual
+			t = t_inicial + dt * i
+
+			# calcula os vetores relativos à curva
+			vetor_curva = curva.calcular(t)
+			derivada_vetor_curva = curva.calcular_derivada(t, variacao)
+
+			# calcula o vetor do campo no ponto atual da curva
+			vetor_campo = self.calcular(vetor_curva[0], vetor_curva[1])
+			
+			# calcula o produto escalar do vetor_campo e derivada_vetor_curva
+			# divide por dt e soma ao acumulador da integral
+			valor = derivada_vetor_curva[0] * vetor_campo[0]
+			valor += derivada_vetor_curva[1] * vetor_campo[1]
+			integral += valor * dt
+
+		return integral
 
 
 
@@ -113,19 +144,52 @@ class CampoVetorial3D:
 		return vetor
 
 
-	def calcular_integral_linha(self, curva, resolucao=1e-3):
+	def calcular_integral_linha(self, curva, t_inicial, t_final, resolucao=1e3, variacao=1e-3):
 		'''
 		Calcula a integral de linha do campo em uma curva.
 
 		Parâmetros:
-		- curva: [função (num) -> (num, num, num)] curva parametrizada 3D
-		- resolucao: variação no parâmetro da curva usado para calcular
+		- curva: instância de CurvaParametrizada3D
+		- t_inicial: valor inicial de t
+		- t_final: valor final de t
+		- resolucao: número de subdivisões de integração
+		- variacao: variação no parâmetro usada para calcular a derivada da curva 
 
 		Retorna o valor da integral de linha (num)
 
 		'''
 
-		pass
+		# força int em resolução
+		resolucao = int(resolucao)
+
+		# valor de retorno
+		integral = float()
+
+		# pré-cálculos
+		delta_t = t_final - t_inicial
+		dt = delta_t / resolucao
+
+		# loop de cálculo
+		for i in range(resolucao):
+
+			# calcula o valor de t atual
+			t = t_inicial + dt * i
+
+			# calcula os vetores relativos à curva
+			vetor_curva = curva.calcular(t)
+			derivada_vetor_curva = curva.calcular_derivada(t, variacao)
+
+			# calcula o vetor do campo no ponto atual da curva
+			vetor_campo = self.calcular(vetor_curva[0], vetor_curva[1], vetor_curva[2])
+			
+			# calcula o produto escalar do vetor_campo e derivada_vetor_curva
+			# divide por dt e soma ao acumulador da integral
+			valor = derivada_vetor_curva[0] * vetor_campo[0]
+			valor += derivada_vetor_curva[1] * vetor_campo[1]
+			valor += derivada_vetor_curva[2] * vetor_campo[2]
+			integral += valor * dt
+
+		return integral
 
 
 
