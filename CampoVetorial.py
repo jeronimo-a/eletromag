@@ -38,14 +38,30 @@ class CampoVetorial2D:
 		'''
 
 		# valor de retorno
-		valor = tuple()
+		vetor = tuple()
 
 		# calcula os valores
 		valor_x = self.funcao_x(x, y)
 		valor_y = self.funcao_y(x, y)
-		valor = (valor_x, valor_y)
+		vetor = (valor_x, valor_y)
 
-		return valor
+		return vetor
+
+
+	def calcular_integral_linha(self, curva, resolucao=1e-3):
+		'''
+		Calcula a integral de linha do campo em uma curva.
+
+		Parâmetros:
+		- curva: [função (num) -> (num, num)] curva parametrizada 2D
+		- resolucao: variação no parâmetro da curva usado para calcular
+
+		Retorna o valor da integral de linha (num)
+
+		'''
+
+		pass
+		
 
 
 
@@ -84,17 +100,30 @@ class CampoVetorial3D:
 		'''
 
 		# valor de retorno
-		valor = tuple()
+		vetor = tuple()
 
 		# calcula os valores
 		valor_x = self.funcao_x(x, y, z)
 		valor_y = self.funcao_y(x, y, z)
 		valor_z = self.funcao_z(x, y, z)
-		valor = (valor_x, valor_y, valor_z)
+		vetor = (valor_x, valor_y, valor_z)
 
-		return valor
+		return vetor
 
 
+	def calcular_integral_linha(self, curva, resolucao=1e-3):
+		'''
+		Calcula a integral de linha do campo em uma curva.
+
+		Parâmetros:
+		- curva: [função (num) -> (num, num, num)] curva parametrizada 3D
+		- resolucao: variação no parâmetro da curva usado para calcular
+
+		Retorna o valor da integral de linha (num)
+
+		'''
+
+		pass
 
 
 
