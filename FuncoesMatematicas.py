@@ -42,10 +42,11 @@ class Funcao1D:
 
 		# cálculo da derivada
 		valor = self.funcao(var_independente)
-		valor_res = self.funcao_x(var_independente + variacao)
+		valor_res = self.funcao(var_independente + variacao)
 		derivada = (valor_res - valor) / variacao
 
 		return derivada
+
 
 
 
