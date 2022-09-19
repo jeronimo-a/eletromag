@@ -41,8 +41,8 @@ class Funcao1D:
 		derivada = float()
 
 		# cálculo da derivada
-		valor = self.funcao(var_independente)
-		valor_res = self.funcao(var_independente + variacao)
+		valor = self.calcular(var_independente)
+		valor_res = self.calcular(var_independente + variacao)
 		derivada = (valor_res - valor) / variacao
 
 		return derivada
