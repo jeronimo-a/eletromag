@@ -18,5 +18,6 @@ Para cada aula, o processo de implementação será:
 1. Listar as coisas [arquivo](MILESTONES.md) de documentação dos *milestones*;
 1. Criar o *milestone* da aula no *github*;
 1. Criar um *issue* para cada coisa pertencente ao *milestone*;
-1. Implementar os cada *issue* individualmente.
+1. Implementar os cada *issue* individualmente;
+1. Após finalizada, atualizar o [arquivo](MILESTONES.md) de documentação dos *milestones* com detalhes da implementação.
 
