@@ -4,6 +4,8 @@ Insper, Engenharia da Computação 2022.2
 
 Classes de curvas parametrizadas
 
+Jerônimo de Abreu Afrange
+
 '''
 
 class CurvaParametrizada2D:

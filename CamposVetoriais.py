@@ -4,6 +4,8 @@ Insper, Engenharia da Computação 2022.2
 
 Classes de campos vetoriais
 
+Jerônimo de Abreu Afrange
+
 '''
 
 class CampoVetorial2D:
