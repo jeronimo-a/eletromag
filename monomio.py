@@ -97,6 +97,9 @@ class Monomio:
 				if expoente_atual > 0:
 					expoentes_derivada[variavel_atual] = expoente_atual
 
+		# se o tamanho do dict de expoentes for 0, retorna apenas o coeficiente
+		if len(expoentes_derivada) == 0: return coeficiente_derivada
+
 		# constrói o monômio derivado e o retorna
 		monomio_derivada = Monomio(expoentes_derivada, coeficiente_derivada)
 		return monomio_derivada

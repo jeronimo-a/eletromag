@@ -30,7 +30,9 @@ class Polinomio:
 		- monomios: list[Monomio], monômios que compõem o polinômio;
 		- constante: valor numérico independente.
 
-		'''		
+		'''
+
+		if len(monomios) == 1 and constante == 0: return monomios[0]
 
 		# amarra os argumentos à instância de Monomio
 		self.monomios = Polinomio.combinar_monomios(monomios)
@@ -59,6 +61,51 @@ class Polinomio:
 			resultado += monomio.calcular(valores)
 
 		return resultado
+
+
+	def derivada_parcial(self, variavel):
+		'''
+		Determina a derivada parcial analítica de determinada variável do polinômio.
+
+		Parâmetros:
+		- variavel: (str) nome da variável na qual derivar
+
+		Retorna ou:
+		- uma nova instância de Polinomio
+		- uma instância de Monomio
+		- um valor numérico
+
+		'''
+
+		# argumentos do novo polinômio
+		monomios_derivados = list()
+		constante_derivada = 0
+
+		# para cada monômio
+		for monomio in self.monomios:
+
+			# deriva o monômio
+			monomio_derivado = monomio.derivada_parcial(variavel)
+
+			# se o valor for um novo monômio, o appenda à nova lista de monômios
+			if isinstance(monomio_derivado, Monomio):
+				monomios_derivados.append(monomio_derivado)
+
+			# se não, soma à constante
+			else: constante_derivada += monomio_derivado
+
+		# numero de monômios
+		numero_monomios = len(monomios_derivados)
+
+		# se não houver monômios
+		if numero_monomios == 0: return constante_derivada
+
+		# se houver apenas um monômio e constante 0
+		if numero_monomios == 1 and constante_derivada == 0:
+			return monomios_derivados[0]
+
+		# para todos os demais casos, retorna um novo polinômio
+		return Polinomio(monomios_derivados, constante_derivada)
 
 
 	@staticmethod
