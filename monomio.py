@@ -83,7 +83,13 @@ class Monomio:
 		self.variaveis = variaveis
 		self.expoentes = expoentes
 		self.identidade = identidade
+		self.coeficiente = coeficiente
 		self.numero_variaveis = numero_variaveis
+
+
+	def __str__(self):
+		''' Overload do cast de string '''
+		return str(self.coeficiente) + self.identidade
 
 
 
