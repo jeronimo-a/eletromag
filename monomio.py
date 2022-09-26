@@ -132,9 +132,26 @@ class Monomio:
 		return identidade
 
 
+	@staticmethod
+	def combinar(monomio_1, monomio_2):
+		''' Combina dois monômios compatíveis em um só '''
+
+		# filtra monômios não compatíveis
+		if monomio_1.identidade != monomio_2.identidade:
+			return None
+
+		# determina os argumentos
+		expoentes = monomio_1.expoentes
+		coeficiente = monomio_1.coeficiente + monomio_2.coeficiente
+
+		# contrói o monômio
+		return Monomio(expoentes, coeficiente)
+
+
 	def __str__(self):
 		''' Overload da função de cast de string '''
 		return str(self.coeficiente) + self.identidade
+
 
 
 
