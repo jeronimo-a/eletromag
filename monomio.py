@@ -14,56 +14,36 @@ class Monomio:
 	''' Representa um monômio matemático '''
 
 
-	def __init__(self, variaveis, potencias, coeficiente=1):
+	def __init__(self, expoentes, coeficiente=1):
 		'''
 		Cria uma nova instância de Monomio.
 
 		Parâmetros:
-		- variaveis: lista de strings com os nomes das variáveis;
-		- potencias: lista de ints maiores que zero com os expoentes das variáveis;
+		- expoentes: dicionário [variável(str) -> expoente(int > 0)];
 		- coeficiente: valor numérico, coeficiente do monômio
 
 		'''
 
 		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---
 
-		if not (isinstance(variaveis, list) or isinstance(variaveis, tuple)):
-			raise TypeError('O argumento "variaveis" tem que ser uma lista ou tupla.')
-
-		if not (isinstance(potencias, list) or isinstance(potencias, tuple)):
-			raise TypeError('O argumento "potencias" tem que ser uma lista ou tupla.')
+		if not isinstance(expoentes, dict):
+			raise TypeError('O argumento "expoentes" tem que ser um dicionário.')
 
 		if not (isinstance(coeficiente, int) or isinstance(coeficiente, float)):
 			raise TypeError('O argumento "coeficiente" tem que ser um valor numérico.')
 
-		if len(set(variaveis)) != len(variaveis):
-			raise ValueError('Existem variáveis repetidas em "variaveis".')
-
-		for variavel in variaveis:
+		for variavel in expoentes.keys():
 			if not isinstance(variavel, str):
-				raise TypeError('As variáveis em "variaveis" devem ser strings.')
-
-		if len(variaveis) != len(potencias):
-			raise ValueError('As quantidades de variáveis e potências são diferentes.')
-
-		for potencia in potencias:
-			if not isinstance(potencia, int):
-				raise TypeError('Os potências em "potencias" devem ser inteiros.')
-			if potencia < 1:
-				raise ValueError('Os potências em "potencias" têm que ser maior que zero.')
+				raise TypeError('As chaves do dicionário "expoentes" têm que ser strings.')
+			if not isinstance(expoentes[variavel], int):
+				raise TypeError('Os valores do dicionário "expoentes" têm que ser inteiros.')
+			if expoentes[variavel] < 1:
+				raise ValueError('Os valores do dicionário "expoentes" têm que ser maiores que zero.')
 
 		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---
 
-		# converte os argumentos
-		variaveis = list(variaveis)
-		potencias = list(potencias)
-
-		# cria o dicionário de cruzamento das variáveis com as potencias
-		expoentes = dict()
-		for i in range(len(variaveis)):
-			expoentes[variaveis[i]] = potencias[i]
-
-		# organiza as variáveis em ordem alfabética para facilitar a comparação de monômios
+		# cria a lista de variáveis e ordena para criação da identidade
+		variaveis = list(expoentes.keys())
 		variaveis.sort()
 
 		# monta a identidade do monômio
@@ -74,7 +54,7 @@ class Monomio:
 			identidade += str(expoente)
 
 		# determina o grau e o número de variáveis do monômio
-		grau = sum(potencias)
+		grau = sum(expoentes.values())
 		numero_variaveis = len(variaveis)
 
 		# define as propriedades
@@ -91,7 +71,7 @@ class Monomio:
 		Calcula o valor do monômio para determinados valores das variáveis.
 
 		Parâmetros:
-		- valores: dicionário [variável(str) -> valor(num)]
+		- valores: dicionário [variável(str) -> valor(num)];
 
 		Retorna o valor numérico.
 
