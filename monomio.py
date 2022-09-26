@@ -61,6 +61,47 @@ class Monomio:
 		return resultado
 
 
+	def derivada_parcial(self, variavel):
+		'''
+		Determina a derivada parcial analítica de determinada variável do monômio.
+
+		Parâmetros:
+		- variavel: (str) nome da variável na qual derivar
+
+		Retorna ou:
+		- uma nova instância de Monomio
+		- um valor numérico
+
+		'''
+
+		# se a variável não existe no monômio, retorna 0
+		if variavel not in self.variaveis: return 0
+
+		# argumentos da nova instância
+		expoentes_derivada = dict()
+		coeficiente_derivada = self.coeficiente
+
+		# loop de derivação variável por variável
+		for variavel_atual in self.variaveis:
+
+			expoente_atual = self.expoentes[variavel_atual]
+
+			# se a variável atual não for a variável em questão
+			if not variavel_atual == variavel:
+				expoentes_derivada[variavel_atual] = expoente_atual	# apenas repassa
+
+			# se for, multiplica o coeficiente pelo expoente, e o decrementa
+			else:
+				coeficiente_derivada *= expoente_atual
+				expoente_atual -= 1
+				if expoente_atual > 0:
+					expoentes_derivada[variavel_atual] = expoente_atual
+
+		# constrói o monômio derivado e o retorna
+		monomio_derivada = Monomio(expoentes_derivada, coeficiente_derivada)
+		return monomio_derivada
+
+
 	@staticmethod
 	def extrair_identidade(expoentes):
 		'''
