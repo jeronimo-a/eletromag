@@ -25,7 +25,7 @@ class Monomio:
 
 		'''
 
-		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---
+		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---
 
 		if not (isinstance(variaveis, list) or isinstance(variaveis, tuple)):
 			raise TypeError('O argumento "variaveis" tem que ser uma lista ou tupla.')
@@ -52,8 +52,7 @@ class Monomio:
 			if potencia < 1:
 				raise ValueError('Os potências em "potencias" têm que ser maior que zero.')
 
-		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---	---
-
+		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---
 
 		# converte os argumentos
 		variaveis = list(variaveis)
@@ -68,7 +67,7 @@ class Monomio:
 		variaveis.sort()
 
 		# monta a identidade do monômio
-		identidade = ''
+		identidade = str()
 		for variavel in variaveis:
 			expoente = expoentes[variavel]
 			identidade += variavel
@@ -85,6 +84,33 @@ class Monomio:
 		self.identidade = identidade
 		self.coeficiente = coeficiente
 		self.numero_variaveis = numero_variaveis
+
+
+	def combinar(self, other):
+		''' Combina dois monômios de identidades iguais '''
+
+		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---
+		if not isinstance(other, Monomio):
+			raise TypeError('O argumento "other" tem que ser ua instância de Monomio.')
+		if self.identidade != other.identidade:
+			raise ValueError('Os dois monômios têm identidades diferentes.')
+		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---
+
+		# calcula o coeficiente do novo monômio
+		coeficiente = self.coeficiente + other.coeficiente
+
+		# formata as variáveis e expoentes
+		variaveis = list()
+		potencias = list()
+		for variavel in self.expoentes.keys():
+			potencia = self.expoentes[variavel]
+			variaveis.append(variavel)
+			potencias.append(potencia)
+
+		# cria a nova instância de Monomio
+		monomio_combinado = Monomio(variaveis, potencias, coeficiente)
+
+		return monomio_combinado
 
 
 	def __str__(self):
