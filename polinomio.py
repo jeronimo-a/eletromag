@@ -77,9 +77,22 @@ class Polinomio:
 		self.grau = grau
 		self.monomios = monomios_combinados
 		self.variaveis = variaveis
+		self.constante = constante
 		self.numero_monomios = len(monomios_combinados)
 		self.numero_variaveis = numero_variaveis
 
+
+	def __str__(self):
+		''' Overload do cast de string '''
+		
+		string = str()
+
+		for monomio in self.monomios:
+			string += str(monomio) + ' + '
+
+		string += str(self.constante)
+
+		return string
 
 
 
