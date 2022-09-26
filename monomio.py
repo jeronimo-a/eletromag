@@ -31,7 +31,7 @@ class Monomio:
 
 		# amarra os argumentos à instância de Monomio
 		self.expoentes = expoentes
-		self.coeficiente = coeficiente
+		self.coeficiente = float(coeficiente)
 
 		# propriedades auxiliares
 		self.variaveis = set(expoentes.keys())
