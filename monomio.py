@@ -123,16 +123,8 @@ class Monomio:
 		# calcula o coeficiente do novo monômio
 		coeficiente = self.coeficiente + other.coeficiente
 
-		# formata as variáveis e expoentes
-		variaveis = list()
-		potencias = list()
-		for variavel in self.expoentes.keys():
-			potencia = self.expoentes[variavel]
-			variaveis.append(variavel)
-			potencias.append(potencia)
-
 		# cria a nova instância de Monomio
-		monomio_combinado = Monomio(variaveis, potencias, coeficiente)
+		monomio_combinado = Monomio(self.expoentes, coeficiente)
 
 		return monomio_combinado
 
