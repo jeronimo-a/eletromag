@@ -86,14 +86,58 @@ class Monomio:
 		self.numero_variaveis = numero_variaveis
 
 
+	def calcular(self, valores):
+		'''
+		Calcula o valor do monômio para determinados valores das variáveis.
+
+		Parâmetros:
+		- valores: dicionário [variável(str) -> valor(num)]
+
+		Retorna o valor numérico.
+
+		'''
+
+		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---
+
+		if not isinstance(valores, dict):
+			raise TypeError('O argumento "valores" tem que ser um dicionário.')
+
+		if len(valores) != self.numero_variaveis:
+			raise ValueError('Número incorreto de variáveis recebido em "valores".')
+
+		for variavel in valores.keys():
+			if not isinstance(variavel, str):
+				raise TypeError('As chaves do dicionário "valores" têm que ser strings.')
+			if not (isinstance(valores[variavel], int) or isinstance(valores[variavel], float)):
+				raise TypeError('Os valores do dicionário "valores" têm que ser numéricos.')
+			if variavel not in self.variaveis:
+				raise ValueError('Uma das variáveis não existe no monômio.')
+		
+		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---
+
+		# variável de retorno
+		resultado = self.coeficiente
+
+		# loop de variáveis
+		for variavel in self.variaveis:
+			expoente = self.expoentes[variavel]
+			valor = valores[variavel]
+			resultado *= valor ** expoente
+
+		return resultado
+
+
 	def combinar(self, other):
 		''' Combina dois monômios de identidades iguais '''
 
 		#--	--- VERIFICA A VALIDADE DOS ARGUMENTOS	---	---	---	---	---	---	---	---	---	---	---
+
 		if not isinstance(other, Monomio):
-			raise TypeError('O argumento "other" tem que ser ua instância de Monomio.')
+			raise TypeError('O argumento "other" tem que ser uma instância de Monomio.')
+
 		if self.identidade != other.identidade:
 			raise ValueError('Os dois monômios têm identidades diferentes.')
+
 		#--	---	---	---	---	---	---	--- ---	---	---	---	---	---	---	---	---	---	---	---	---	---
 
 		# calcula o coeficiente do novo monômio
