@@ -96,6 +96,16 @@ class Polinomio:
 		return variaveis
 
 
+	def __str__(self):
+		''' Overload da função de cast de string '''
+		string = str()
+		for monomio in self.monomios:
+			string += str(monomio)
+			string += ' + '
+		string += str(self.constante)
+		return string
+
+
 
 
 
