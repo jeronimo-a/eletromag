@@ -40,6 +40,27 @@ class Polinomio:
 		self.variaveis = Polinomio.combinar_variaveis(monomios)
 
 
+	def calcular(self, valores):
+		'''
+		Calcula o valor numérico do polinômio para valores específicos das variáveis.
+
+		Parâmetros:
+		- valores: dict[str(var) -> num(valor)], determina o valor de cada variável
+
+		Retorna o valor numérico do polinômio para os valores das variáveis dados.
+
+		'''
+
+		# variável de retorno
+		resultado = self.constante
+
+		# loop de adição ao resultado
+		for monomio in self.monomios:
+			resultado += monomio.calcular(valores)
+
+		return resultado
+
+
 	@staticmethod
 	def combinar_monomios(monomios):
 		'''
